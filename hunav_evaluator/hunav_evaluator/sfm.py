@@ -48,16 +48,18 @@ class SFM():
     def computeObstacleForce(self, agent):
 
         obstacleForce = np.array([0.0, 0.0], dtype=np.float32)
-        agentpos = np.array([agent.position.position.x, agent.position.position.y])
+        # agentpos = np.array([agent.position.position.x, agent.position.position.y])
         if len(agent.closest_obs)>0:
-            for obs in agent.closest_obs:
-                agentobs = np.array([obs.x, obs.y])
-                dist = np.linalg.norm(agentpos - agentobs)
-                dirvec = (agentpos - agentobs)/dist
-                dist = dist - agent.radius
-                obstacleForce += self.forceFactorObstacle * np.exp(-dist / self.forceSigmaObstacle) * dirvec
+            obstacle_force = agent.closest_obs[0]
+            obstacleForce = np.array([obstacle_force.x, obstacle_force.y], dtype=np.float32)
+        #     for obs in agent.closest_obs:
+        #         agentobs = np.array([obs.x, obs.y])
+        #         dist = np.linalg.norm(agentpos - agentobs)
+        #         dirvec = (agentpos - agentobs)/dist
+        #         dist = dist - agent.radius
+        #         obstacleForce += self.forceFactorObstacle * np.exp(-dist / self.forceSigmaObstacle) * dirvec
 
-            obstacleForce = obstacleForce / len(agent.closest_obs)
+        #     obstacleForce = obstacleForce / len(agent.closest_obs)
             return obstacleForce
         
         return obstacleForce 
