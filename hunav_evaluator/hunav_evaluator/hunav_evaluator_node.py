@@ -216,7 +216,7 @@ class HunavEvaluatorNode(Node):
             for a in la.agents:
                 if a.behavior == behavior:
                     ag.agents.append(a)
-                if a.behavior_state != a.BEH_NO_ACTIVE:
+                if a.behavior.state != a.behavior.BEH_NO_ACTIVE:
                     beh_active[i]=1
             if len(ag.agents) > 0:
                 beh_agents.append(ag)
