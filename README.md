@@ -2,6 +2,15 @@
 
 A controller of human navigation behaviors for Robotics based on ROS2.
 
+## SocialNavigationSoar compatability
+This repository is now able to receive agent data from the pedsim_ros simulation to calculate the social nav metrics. To make it work, use the pedsim_ros simulation and follow the hunav_evaluator package instruction.
+
+Run this command in another terminal, attached to the docker container.
+
+```bash
+ros2 launch hunav_evaluator hunav_evaluator_launch.py
+```
+
 **This is a work in progress version**
 
 **Tested in ROS2 Humble**
